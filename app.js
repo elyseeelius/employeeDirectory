@@ -61,7 +61,9 @@ function sortCard() {
   showProfiles(finalProfile);
 }
 
-
+// This is the most important funciton
+// once you can have the right information (with the help of the index)
+//   the project is done.
 container.addEventListener("click", (e) => {
   if (e.target !== container) {
     const card = e.target.closest(".card");
@@ -96,4 +98,11 @@ close.addEventListener("click", () => {
   overlay.style.display = 'none';
 });
 const searchBox = document.getElementById("searchBox");
-searchBox.addEventListener("keyup", sortCard);
+searchBox.addEventListener("keyup", function sortCard() {
+  let inputField = document.getElementById('search').value.toLowerCase();
+  if (inputField && inputField.length) {
+    finalProfile = profiles.filter((profile) =>
+      profile.name.first.indexOf(inputField) > -1 || profile.name.last.indexOf(inputField) > -1);
+  }
+  showProfiles(finalProfile);
+});
