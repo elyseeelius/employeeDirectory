@@ -1,6 +1,6 @@
 const container = document.querySelector(".container");
 const overlay = document.querySelector(".overlay");
-const modal = document.querySelector(".content");
+const modalContent = document.querySelector(".content");
 const close = document.querySelector(".close");
 const leftArrow = document.querySelector("#leftArrow");
 const rightArrow = document.querySelector("#rightArrow");
@@ -45,7 +45,7 @@ function show(i) {
 `
 
   overlay.style.display = 'block'
-  modal.innerHTML = contentHTML;
+  modalContent.innerHTML = contentHTML;
 
 };
 

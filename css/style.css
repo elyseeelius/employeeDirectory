@@ -4,22 +4,26 @@ body {
   margin: 0 auto;
   background-color: rgba(6, 40, 104, 0.2);
 }
+
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-div.card{
+
+div.card {
   width: 30%;
   margin: 1%;
   display: flex;
   justify-content: center;
 
 }
+
 .title {
   margin: 2% 1%;
   color: coral
 }
+
 h2,
 p {
   line-height: 10px;
@@ -34,6 +38,7 @@ img {
   margin-right: 20px;
   border: 3px solid coral;
 }
+
 .card {
   height: 150px;
   cursor: pointer;
@@ -42,12 +47,14 @@ img {
   border-radius: 10px;
   border: 2px solid coral;
 }
+
 .card:hover {
   border: 2px solid #4c4f7e;
   background: #4c4f7e;
   color: #fff;
 }
-#search{
+
+#search {
   position: absolute;
   top: 5%;
   left: 74%;
@@ -57,9 +64,11 @@ img {
   border: 2px solid coral;
   background-color: inherit;
 }
-#search-field:focus {
+
+#search:focus {
   background-color: #fff;
 }
+
 .overlay {
   display: none;
   position: absolute;
@@ -69,60 +78,50 @@ img {
   bottom: 0;
   background: rgba(109, 109, 109, 0.7);
 }
+
 .close {
   position: absolute;
   width: 20px;
   left: 85%;
+  top: 0;
   padding: 20px;
 }
+
 .modal {
   width: 30%;
   height: 60%;
   margin: 5% auto;
   position: relative;
   text-align: center;
-  background: #d3d3d3;
+  background: #dbdbdb;
   border: 2px solid coral;
   border-radius: 10px;
-  padding: 1%;
+  padding: 2% 1%;
 }
+
 h2,
 p {
   text-transform: capitalize;
 }
+
 .email {
   text-transform: lowercase;
 }
-.leftPrev {
-  left: 0.5em;
-  top: 30%;
-  cursor: pointer;
-  position: absolute;
-  font-size: 2.5em;
-  text-decoration: none;
-  color: #666666c4;
-}
-.rightNext {
-  right: 0.5em;
-  top: 30%;
-  cursor: pointer;
-  position: absolute;
-  font-size: 2.5em;
-  text-decoration: none;
-  color: rgba(102, 102, 102, 0.7);
-}
+
 #leftArrow {
   position: absolute;
   top: 40%;
   left: 5%;
   width: 30px;
 }
+
 #rightArrow {
   position: absolute;
   top: 40%;
   left: 90%;
   width: 30px;
 }
+
 .phone {
   margin-top: 10%;
 }
@@ -130,6 +129,7 @@ p {
 .city {
   margin-bottom: 10%;
 }
+
 hr {
   border: 1px solid #ff7f50;
 }
