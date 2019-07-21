@@ -5,52 +5,29 @@ const modal = document.querySelector(".modal-info");
 const closeModal = document.querySelector(".modal-close");
 const leftArrow = document.getElementById("leftArrow");
 const rightArrow = document.getElementById("rightArrow");
-let finalProfile = [];
-let profiles = [];
 
 
-// --------------------------------------------------------------------//
-//  FETCH FUNCTIONS
-// --------------------------------------------------------------------//
 
-// fetch('https://randomuser.me/api/?results=12')
-// .then(response=> response.json())
-// .then(data =>{
-//     const profiles = data.results;
-//     console.log(profiles)
-// })
-// .then(filterprofile)
-
- function fetchData(url){
-    return fetch(url)
-      .then(res => res.json())
-      .catch(error => console.log('Please check your code. Something is not right.', error))
-  }
-  
-    fetchData('https://randomuser.me/api/?results=12')
+ fetch('https://randomuser.me/api/?results=12')
+    .then(res => res.json())
     .then(res => {
       const results = res.results;
       profiles = results;
     })
-    .then(filterprofile)
-    
-
-// --------------------------------------------------------------------//
-//  HELPER FUNCTIONS
-// --------------------------------------------------------------------//
+    .then(sortCard)
 
   function showProfiles (data) {
    let statusHTML = " ";
    data.forEach((profile, i) =>{
         statusHTML += `
-        <section class="card" data-i="${i}">
+        <div class="card" data-i="${i}">
             <img class="avatar" src="${profile.picture.large}" />
             <div class="text-container">
                 <h2 class="name">${profile.name.first} ${profile.name.last}</h2>
                 <p class="email">${profile.email}</p>
                 <p class="address">${profile.location.city}</p>
             </div>
-        </section>
+        </div>
          `;
    }
    ); 
@@ -68,21 +45,22 @@ function show(i){
       <p class="city">${profile.location.city}</p><hr>
       <p class="phone">${profile.phone}</p>
       <p>${profile.location.street} ${profile.location.state}, ${profile.location.postcode}</p>
-      <p class= "bday">Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+      <p>Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
     `
-    overlay.classList.remove("hidden");
+ 
+    overlay.style.display = 'block'
     modal.innerHTML = contentHTML;
-    console.log(profile)
+
 }; 
    
 
-function filterprofile() {
+function sortCard() {
     finalProfile = profiles;
     let inputField = document.getElementById('search-field').value.toLowerCase();
 
     if (inputField && inputField.length) {
         finalProfile = finalProfile.filter((profile) =>
-            profile.name.first.iOf(inputField) > -1 || profile.name.last.iOf(inputField) > -1);
+            profile.name.first.indexOf(inputField) > -1 || profile.name.last.indexOf(inputField) > -1);
     }
     showProfiles(finalProfile);
 }
@@ -96,7 +74,7 @@ function filterprofile() {
     }
   });
 
-  leftArrow.addEventListener("click", (event)=>{
+  leftArrow.addEventListener("click", (e)=>{
     let card = document.getElementById("modalCard");
     let currenti = +modalCard.getAttribute('data-i', card);
      currenti -=1;
@@ -107,7 +85,7 @@ function filterprofile() {
      show(currenti);
   });
 
-  rightArrow.addEventListener("click", (event)=>{
+  rightArrow.addEventListener("click", (e)=>{
     let card = document.getElementById("modalCard");
     let currenti = + modalCard.getAttribute('data-i',card);
      currenti +=1;
@@ -119,11 +97,10 @@ function filterprofile() {
   });
 
   closeModal.addEventListener("click", ()=>{
-    overlay.classList.add("hidden");
+     overlay.style.display  = 'none';
   });
-
   const searchBar = document.getElementById("searchBar");
-  searchBar.addEventListener("keyup", filterprofile);
+  searchBar.addEventListener("keyup", sortCard);
   
 
 
