@@ -47,7 +47,7 @@ img {
   background: #4c4f7e;
   color: #fff;
 }
-#search-field {
+#search{
   position: absolute;
   top: 5%;
   left: 74%;
@@ -69,7 +69,7 @@ img {
   bottom: 0;
   background: rgba(109, 109, 109, 0.7);
 }
-.modal-close {
+.close {
   position: absolute;
   width: 20px;
   left: 85%;
