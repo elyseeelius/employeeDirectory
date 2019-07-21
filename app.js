@@ -66,9 +66,8 @@ function sortCard() {
 //   the project is done.
 container.addEventListener("click", (e) => {
   if (e.target !== container) {
-    const card = e.target.closest(".card");
-    const i = card.getAttribute('data-i');
-    show(i);
+    const index = e.target.closest(".card").getAttribute('data-i');
+    show(index);
   }
 });
 
